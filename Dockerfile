@@ -12,8 +12,8 @@ ENV VIRTUAL_ENV=dental
 # RUN apt-get install software-properties-common
 # RUN apt-add-repository universe
 RUN apt-get update
-RUN apt-get install python-dev
-RUN apt-get install build-essential
+# RUN apt-get install python-dev
+# RUN apt-get install build-essential
 RUN pip install --upgrade pip setuptools
 RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
