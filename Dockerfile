@@ -9,7 +9,7 @@ RUN apk add --no-cache gcc
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN python -m venv dental
-RUN ./dental/Scripts/activate
+RUN source dental/bin/activate
 RUN pip install -r requirements.txt
 COPY ./ ./
 #default command
