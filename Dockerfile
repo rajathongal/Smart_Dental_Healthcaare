@@ -18,5 +18,5 @@ COPY ./ ./
 #CMD ["npm", "run", "start"]
 RUN cd 3_Inference
 RUN ls
-RUN python Detector.py --is_tiny
+RUN python ./3_Inference/Detector.py --is_tiny
 CMD ["python", "Detector.py", "--is_tiny"]
