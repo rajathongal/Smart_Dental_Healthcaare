@@ -18,7 +18,7 @@ RUN pip install --upgrade pip setuptools
 RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # RUN /dental/bin/activate
-RUN apt-get install gcc g++
+RUN apt-get install -y gcc g++
 RUN pip install -r requirements.txt
 COPY ./ ./
 #default command
