@@ -9,6 +9,7 @@ ENV VIRTUAL_ENV=dental
 #RUN apt-get install lapack libstdc++ && apt-get install .builddeps g++ gcc gfortran musl-dev lapack-dev
 # RUN pip install --upgrade pip
 # RUN pip install --upgrade setuptools setuptools wheel
+RUN pip install --upgrade pip
 RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # RUN /dental/bin/activate
