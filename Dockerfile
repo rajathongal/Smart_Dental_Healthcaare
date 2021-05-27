@@ -16,4 +16,6 @@ RUN pip install -r requirements.txt
 COPY ./ ./
 #default command
 #CMD ["npm", "run", "start"]
+RUN cd 3_Inference
+RUN python Detector.py --is_tiny
 CMD ["python", "Detector.py", "--is_tiny"]
