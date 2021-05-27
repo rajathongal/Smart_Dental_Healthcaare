@@ -9,8 +9,8 @@ ENV VIRTUAL_ENV=dental
 #RUN apt-get install lapack libstdc++ && apt-get install .builddeps g++ gcc gfortran musl-dev lapack-dev
 # RUN pip install --upgrade pip
 # RUN pip install --upgrade setuptools setuptools wheel
-RUN apt-get install software-properties-common
-RUN apt-add-repository universe
+# RUN apt-get install software-properties-common
+# RUN apt-add-repository universe
 RUN apt-get update
 RUN apt-get install python-dev
 RUN apt-get install build-essential
