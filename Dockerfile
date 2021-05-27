@@ -5,8 +5,8 @@ COPY ./requirements.txt ./
 #COPY ./package.json ./ 
 #RUN node
 #RUN npm install 
-RUN apt-get add --no-cache gcc
-RUN apt-get --no-cache add lapack libstdc++ && apk --no-cache add --virtual .builddeps g++ gcc gfortran musl-dev lapack-dev
+RUN apt-get add gcc
+RUN apt-get add lapack libstdc++ && apt-get add .builddeps g++ gcc gfortran musl-dev lapack-dev
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools setuptools wheel
 RUN python -m venv dental
