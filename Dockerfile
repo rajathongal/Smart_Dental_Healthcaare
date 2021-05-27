@@ -9,7 +9,7 @@ COPY ./requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools setuptools wheel
 RUN python -m venv dental
-RUN source dental/bin/activate
+RUN /dental/bin/activate
 RUN pip install -r requirements.txt
 COPY ./ ./
 #default command
