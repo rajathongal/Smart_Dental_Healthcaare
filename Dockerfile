@@ -21,6 +21,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN apt-get install -y gcc g++
 RUN python -m pip install wheel
 RUN pip install -r requirements.txt
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN python -c "import cv2"
 COPY ./ ./
 #default command
