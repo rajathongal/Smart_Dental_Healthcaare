@@ -19,6 +19,7 @@ RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # RUN /dental/bin/activate
 RUN apt-get install -y gcc g++
+RUN python -m pip install wheel
 RUN pip install -r requirements.txt
 COPY ./ ./
 #default command
