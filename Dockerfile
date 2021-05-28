@@ -21,7 +21,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN apt-get install -y gcc g++
 RUN python -m pip install wheel
 RUN pip install -r requirements.txt
-RUN python3-c "import cv2"
+RUN python -c "import cv2"
 COPY ./ ./
 #default command
 #CMD ["npm", "run", "start"]
