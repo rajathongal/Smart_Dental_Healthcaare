@@ -22,7 +22,7 @@ from keras_yolo3.yolo import YOLO, detect_video, detect_webcam
 from PIL import Image
 from timeit import default_timer as timer
 from utils import load_extractor_model, load_features, parse_input, detect_object
-import test
+# import test
 import utils
 import pandas as pd
 import numpy as np
