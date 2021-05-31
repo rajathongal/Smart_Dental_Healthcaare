@@ -17,9 +17,44 @@ router.post("/predict", async (req, res) => {
     })
 
     python.on('close',  (code) => {
-        console.log(code, "from code")
+        
         if (code === 0){
+            fs.unlink(`./Data/Source_Images/Test_Image_Detection_Results/${req.file.originalname}`, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    // file doens't exist
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    // other errors, e.g. maybe we don't have enough permission
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info(`removed`);
+                }
+            });
 
+            fs.unlink(`./Data/Source_Images/Test_Images/${req.file.originalname}`, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    // file doens't exist
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    // other errors, e.g. maybe we don't have enough permission
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info(`removed`);
+                }
+            });
+
+            fs.unlink(`./Data/Source_Images/Test_Image_Detection_Results/Detection_Results.csv`, function(err) {
+                if(err && err.code == 'ENOENT') {
+                    // file doens't exist
+                    console.info("File doesn't exist, won't remove it.");
+                } else if (err) {
+                    // other errors, e.g. maybe we don't have enough permission
+                    console.error("Error occurred while trying to remove file");
+                } else {
+                    console.info(`removed`);
+                }
+            });
+           
         } else {
             res.json({
                 success:false,
