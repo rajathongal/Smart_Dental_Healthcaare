@@ -3,7 +3,10 @@ const cors = require("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const configuration = require('./configuration/configurations');
+const  connectDB  = require("./config/database");
 var multer  = require('multer');
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./GraphQL/rootQuery/rootQuery');
 require('dotenv').config();
 
 //Storage Engine Initialization
@@ -23,6 +26,7 @@ const app = express();
 //CORS init
 var whitelist = configuration.ALLOWEDORIGIN.split(',');
 var corsOptionsDelegate = function (req, callback) {
+  console.log(req.headers, "from ori")
   var corsOptions;
   if (whitelist.indexOf(req.header('Origin')) !== -1) {
     corsOptions = { credentials: true, origin: true } // reflect (enable) the requested origin in the CORS response
@@ -32,6 +36,9 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions) // callback expects two parameters: error and options
 }
 app.use(cors(corsOptionsDelegate));
+
+//connect to database
+connectDB();
 
 //Init middleware
 //app.use(express.json({ extended: false }));
@@ -43,5 +50,13 @@ app.get("/", (req, res) =>
 );
 
 app.use("/yolo", upload.single("file"), require("./routes/prediction"));
+
+app.use('/graphql', (req,res) => {
+  return graphqlHTTP({
+    schema,
+    graphiql: true,
+    context: {req,res}
+  })(req,res);
+})
 
 module.exports = app;
