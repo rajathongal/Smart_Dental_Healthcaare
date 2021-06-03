@@ -8,7 +8,7 @@
     "start": "node start.js",
     "server": "cross-env NODE_ENV=development nodemon start.js --unhandled-rejections=strict",
     "start:test": "cross-env NODE_ENV=test node start.js",
-    "start:prod": "cross-env NODE_ENV=production node start.js"
+    "start:prod": "cross-env NODE_ENV=development node start.js"
   },
   "repository": {
     "type": "git",

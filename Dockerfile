@@ -51,4 +51,4 @@ RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 RUN apt-get update -y
 RUN npm install
-CMD ["npm", "run", "server"]
+CMD ["npm", "run", "start:prod"]
