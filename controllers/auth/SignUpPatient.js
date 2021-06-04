@@ -29,6 +29,7 @@ module.exports = async function SignUpUser (name, email, password, context)  {
                        name: response.name,
                        email: response.email,
                        _id: response._id,
+                        isDoctor:response.isDoctor,
                        accessToken: generateToken(response.name, response.email, response.isDoctor).Token,
                        rfsrt: generateToken(response.name, response.email, response.isDoctor).rfsrt
                    }

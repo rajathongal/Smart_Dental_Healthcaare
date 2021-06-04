@@ -19,6 +19,7 @@ module.exports = async function SignIn (email, password) {
                         name: response.name,
                         email: response.email,
                         _id: response._id,
+                        isDoctor:response.isDoctor,
                         accessToken: await generateToken(response.name, response.email, response._id, response.isDoctor).Token,
                         rfsrt: await generateToken(response.name, response.email, response.isDoctor).rfsrt,
                         
