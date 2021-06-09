@@ -4,7 +4,7 @@ const { spawn } = require('child_process');
 const fs = require("fs");
 
 router.post("/predict", async (req, res) => {
-    console.log(req.file, "from pred")
+    console.log(req, "from pred")
     const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
 
     python.stdout.on('data', async (data) => {
