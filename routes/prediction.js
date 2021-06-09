@@ -5,7 +5,7 @@ const fs = require("fs");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
-    console.log(req,req.body, "from pred")
+    console.log(req.body, "from pred")
     const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
 
     python.stdout.on('data', async (data) => {
