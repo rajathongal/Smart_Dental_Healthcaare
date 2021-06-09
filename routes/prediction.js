@@ -3,8 +3,9 @@ const router = express.Router();
 const { spawn } = require('child_process');
 const fs = require("fs");
 
-router.post("/predict", async (req, res) => {
-    console.log(req, "from pred")
+//router.post("/predict", async (req, res) => {
+exports.Prediction = async (req, res) => {
+    console.log(req.file, "from pred")
     const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
 
     python.stdout.on('data', async (data) => {
@@ -99,6 +100,6 @@ router.post("/predict", async (req, res) => {
     // return res.json({
     //     status: "executed"
     // })
-});
+};
 
-module.exports = router;
+//module.exports = router;

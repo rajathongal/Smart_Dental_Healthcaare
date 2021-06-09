@@ -7,6 +7,7 @@ const  connectDB  = require("./config/database");
 var multer  = require('multer');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./GraphQL/rootQuery/rootQuery');
+const { Prediction } = require('./routes/prediction');
 require('dotenv').config();
 
 //Storage Engine Initialization
@@ -49,7 +50,7 @@ app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "public", "index.html"))
 );
 
-app.use("/yolo", upload.single("file"), require("./routes/prediction"));
+app.use("/yolo", upload.single("file"), Prediction);
 
 app.use('/graphql', (req,res) => {
   return graphqlHTTP({
