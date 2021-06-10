@@ -5,12 +5,15 @@ const fs = require("fs");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
-    console.log(req.body.fileName, "from body")
+    console.log(req.body.file, "from body")
+    console.log(req.body.file.filename, "from body")
     if(req.body.file) {
-        var filename = `${req.body.file.fileName}.${req.body.file.type.split("/")[1]}`
-        var filenameWithPath = `./Data/Source_Images/Test_Images/${req.body.file.fileName}.${req.body.file.type.split("/")[1]}`
-    
-        await fs.writeFileSync(filenameWithPath, req.body.file.base64, function(err) {
+        var filename = `${req.body.file.fileName}.${req.body.file.type.split("/")[1]}`;
+        var filenameWithPath = `./Data/Source_Images/Test_Images/${req.body.file.fileName}.${req.body.file.type.split("/")[1]}`;
+        var base64Data = req.body.file.base64.replace(/^data:image\/png;base64,/,"");
+        var binaryData = new Buffer(base64Data, 'base64').toString('binary');
+
+        await fs.writeFileSync(filenameWithPath, binaryData, function(err) {
             console.log(err, "from writeup");
         })
     
