@@ -5,7 +5,7 @@ const fs = require("fs");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
-   
+    console.log(req.body, "from body")
     if(req.file) {
         var filename = `${req.file.originalname}.${req.file.mimetype.split("/")[1]}`
         var filenameWithPath = `./Data/Source_Images/Test_Images/${req.file.originalname}.${req.file.mimetype.split("/")[1]}`
