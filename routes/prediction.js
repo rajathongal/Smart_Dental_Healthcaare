@@ -22,13 +22,15 @@ exports.Prediction = async (req, res) => {
             await fs.writeFile(filenameWithPath, req.body.file, {encoding: 'base64'}, function(err){
                 return res.send(err);
             });
+            var exist = fs.existsSync(`./Data/Source_Images/Test_Images/${filename}`);
+            console.log(exist, "from file upload")
             // fs.writeFileSync(filenameWithPath, binaryData, function(err) {
             //   console.log(err, "from writeup");
             // })
         } catch (err){
             return res.send(err);
         }
-        const python = await spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
+        const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
 
         python.stdout.on('data', async (data) => {
                 
