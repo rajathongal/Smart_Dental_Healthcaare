@@ -33,7 +33,7 @@ exports.Prediction = async (req, res) => {
         python.stdout.on('data', async (data) => {
                 
                 var exists = fs.existsSync(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`);
-               
+                console.log(exists, "from exists")
                 if(exists){
                     res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
                 }
