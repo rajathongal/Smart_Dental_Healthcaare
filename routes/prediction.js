@@ -28,7 +28,7 @@ exports.Prediction = async (req, res) => {
         } catch (err){
             return res.send(err);
         }
-        const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
+        const python = await spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
 
         python.stdout.on('data', async (data) => {
                 
