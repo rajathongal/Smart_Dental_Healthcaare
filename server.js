@@ -8,6 +8,7 @@ var multer  = require('multer');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./GraphQL/rootQuery/rootQuery');
 const { Prediction } = require('./routes/prediction');
+const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 // //Storage Engine Initialization
@@ -22,16 +23,20 @@ require('dotenv').config();
 // });
 // var upload = multer({ storage: storage });
 
-//Init multer
-const multerMid = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-    fileSize: 10 * 1024 * 1024,  //10MB
-  },
-});
+// //Init multer
+// const multerMid = multer({
+//   storage: multer.memoryStorage(),
+//   limits: {
+//     fileSize: 10 * 1024 * 1024,  //10MB
+//   },
+// });
 
 //server init
 const app = express();
+
+//Init file upload middleware
+// default options
+app.use(fileUpload());
 
 //CORS init
 var whitelist = configuration.ALLOWEDORIGIN.split(',');
@@ -61,7 +66,7 @@ app.get("/", (req, res) =>
 
 // app.use("/yolo", upload.single("file"), Prediction);
 
-app.use("/yolo", multerMid.single("file"), Prediction);
+app.use("/yolo", Prediction);
 
 app.use('/graphql', (req,res) => {
   return graphqlHTTP({
