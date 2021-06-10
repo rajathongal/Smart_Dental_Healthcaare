@@ -5,7 +5,8 @@ const fs = require("fs");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
-
+    console.log(req.file)
+    console.log(req.body)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.send('No files were uploaded.');
       } else {
