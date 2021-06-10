@@ -28,11 +28,9 @@ exports.Prediction = async (req, res) => {
         } catch (err){
             return res.send(err);
         }
-    
-        try {
-            const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
-        
-            python.stdout.on('data', async (data) => {
+        const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
+
+        python.stdout.on('data', async (data) => {
                 
                 var exists = fs.existsSync(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`);
                
@@ -40,10 +38,7 @@ exports.Prediction = async (req, res) => {
                     res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
                 }
             })
-        } catch (err) {
-            return res.send(err);
-        }
-    
+
         python.on('close',  (code) => {
             
             if (code === 0){
