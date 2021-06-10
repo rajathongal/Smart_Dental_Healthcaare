@@ -13,20 +13,23 @@ exports.Prediction = async (req, res) => {
         var filename = `${req.body.fileName}.${req.body.type.split("/")[1]}`;
         var filenameWithPath = `./Data/Source_Images/Test_Images/${req.body.fileName}.${req.body.type.split("/")[1]}`;
         //var base64Data = req.body.file.replace(/^data:image\/png;base64,/,"");
-        //var binaryData = Buffer.from(req.body.file, 'base64')//new Buffer(req.body.file, 'base64').toString('binary');
+        var binaryData = Buffer.from(req.body.file, 'base64')//new Buffer(req.body.file, 'base64').toString('binary');
 
         try {
             // await fs.writeFileSync(filenameWithPath, binaryData, function(err) {
             //     console.log(err, "from writeup");
             // })
-            await fs.writeFile(filenameWithPath, req.body.file, {encoding: 'base64'}, function(err){
-                return res.send(err);
+
+            // await fs.writeFile(filenameWithPath, req.body.file, {encoding: 'base64'}, function(err){
+            //     return res.send(err);
+            // });
+            
+            await fs.writeFileSync(filenameWithPath, binaryData, function(err) {
+              console.log(err, "from writeup");
             });
+
             var exist = fs.existsSync(`./Data/Source_Images/Test_Images/${filename}`);
             console.log(exist, "from file upload")
-            // fs.writeFileSync(filenameWithPath, binaryData, function(err) {
-            //   console.log(err, "from writeup");
-            // })
         } catch (err){
             return res.send(err);
         }
