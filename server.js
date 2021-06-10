@@ -9,6 +9,7 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./GraphQL/rootQuery/rootQuery');
 const { Prediction } = require('./routes/prediction');
 const fileUpload = require('express-fileupload');
+const fs = require("fs");
 require('dotenv').config();
 
 // //Storage Engine Initialization
