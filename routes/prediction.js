@@ -5,29 +5,38 @@ const fs = require("fs");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
+    console.log(req.body, "from body")
     if (!req.body.file) {
         return res.send('No files were uploaded.');
       } else {
           
         var filename = `${req.body.fileName}.${req.body.type.split("/")[1]}`;
         var filenameWithPath = `./Data/Source_Images/Test_Images/${req.body.fileName}.${req.body.type.split("/")[1]}`;
-        var base64Data = req.body.file.replace(/^data:image\/png;base64,/,"");
-        var binaryData = new Buffer(base64Data, 'base64').toString('binary');
+        //var base64Data = req.body.file.replace(/^data:image\/png;base64,/,"");
+        var binaryData = new Buffer(req.body.file, 'base64').toString('binary');
 
-        await fs.writeFileSync(filenameWithPath, binaryData, function(err) {
-            console.log(err, "from writeup");
-        })
+        try {
+            await fs.writeFileSync(filenameWithPath, binaryData, function(err) {
+                console.log(err, "from writeup");
+            })
+        } catch (err){
+            return res.send(err);
+        }
     
-        const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
+        try {
+            const python = spawn('dental/bin/python', ['./3_Inference/Detector.py','--is_tiny']);
         
-        python.stdout.on('data', async (data) => {
-            
-            var exists = fs.existsSync(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`);
-           
-            if(exists){
-                res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
-            }
-        })
+            python.stdout.on('data', async (data) => {
+                
+                var exists = fs.existsSync(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`);
+               
+                if(exists){
+                    res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
+                }
+            })
+        } catch (err) {
+            return res.send(err);
+        }
     
         python.on('close',  (code) => {
             
