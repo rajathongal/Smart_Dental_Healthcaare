@@ -1,10 +1,11 @@
 FROM python:3.7-slim
-RUN useradd -ms /bin/bash admin
+#RUN useradd -ms /bin/bash admin
+USER root
 WORKDIR /usr/app
 #RUN apk install --update nodejs nodejs-npm
-RUN chown -R admin:admin /usr/app
-RUN chmod 777 /usr/app
-USER admin
+#RUN chown -R admin:admin /usr/app
+#RUN chmod 777 /usr/app
+
 COPY ./requirements.txt ./ 
 ENV VIRTUAL_ENV=dental
 #COPY ./package.json ./ 
