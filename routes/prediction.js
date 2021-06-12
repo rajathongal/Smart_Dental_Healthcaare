@@ -40,7 +40,8 @@ exports.Prediction = async (req, res) => {
                 var exists = fs.existsSync(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`);
                 console.log(exists, "from exists")
                 if(exists){
-                    res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
+                    //res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
+                    res.sendFile(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
                 }
             })
 
