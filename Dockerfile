@@ -2,6 +2,8 @@ FROM python:3.7-slim
 #RUN useradd -ms /bin/bash admin
 USER root
 WORKDIR /usr/app
+RUN mkdir -p -v Data/Source_Images/Test_Images
+RUN mkdir -p -v Data/Source_Images/Test_Image_Detection_Results
 #RUN apk install --update nodejs nodejs-npm
 #RUN chown -R admin:admin /usr/app
 #RUN chmod 777 /usr/app
