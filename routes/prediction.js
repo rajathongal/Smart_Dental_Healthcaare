@@ -47,7 +47,7 @@ exports.Prediction = async (req, res) => {
                     };
                     console.log(options)
 
-                    res.sendFile(path.resolve(`../Data/Source_Images/Test_Image_Detection_Results/${filename}`), {},function (err) {
+                    res.sendFile(path.resolve(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`), {},function (err) {
                         if (err) {
                             console.log(err)
                         } else {
