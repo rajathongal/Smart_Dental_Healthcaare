@@ -45,15 +45,16 @@ exports.Prediction = async (req, res) => {
                     var options = {
                         root: path.join(__dirname)
                     };
+                    console.log(options)
 
                     res.sendFile(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`, options, function (err) {
                         if (err) {
-                            next(err);
+                            console.log(err)
                         } else {
                             console.log('Sent:', filename);
                         }
                     })
-                }
+                }   
             })
 
         python.on('close',  (code) => {
