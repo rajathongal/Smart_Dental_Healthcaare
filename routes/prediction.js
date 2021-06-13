@@ -41,7 +41,17 @@ exports.Prediction = async (req, res) => {
                 console.log(exists, "from exists")
                 if(exists){
                     //res.download(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
-                    res.sendFile(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`)
+                    var options = {
+                        root: path.join(__dirname)
+                    };
+
+                    res.sendFile(`./Data/Source_Images/Test_Image_Detection_Results/${filename}`, options, function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            console.log('Sent:', filename);
+                        }
+                    })
                 }
             })
 
