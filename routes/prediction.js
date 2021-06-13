@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { spawn } = require('child_process');
 const fs = require("fs");
+const path = require("path");
 
 //router.post("/predict", async (req, res) => {
 exports.Prediction = async (req, res) => {
