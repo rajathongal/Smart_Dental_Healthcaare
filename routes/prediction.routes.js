@@ -6,7 +6,7 @@ const path = require("path");
 
 exports.Prediction = async (req, res) => {
 
-
+    console.log(req.body, `test.${req.body.type.split("/")[1]}`, )
     try {
         var filename = `test.${req.body.type.split("/")[1]}`;
         var filenameWithPath = `test.${req.body.type.split("/")[1]}`;
@@ -23,7 +23,7 @@ exports.Prediction = async (req, res) => {
             });
 
             var exist = fs.existsSync(`./${filename}`);
-            console.log(exist, "from file upload")
+            console.log(exist, "from file upload", `"./${filename}"`)
 
             const python = spawn('dental/bin/python', ['./detect.py','--source', `"./${filename}"`, '--weights', `"./runs/train/exp/weights/best.pt"`]);
 
