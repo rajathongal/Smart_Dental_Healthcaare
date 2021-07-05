@@ -23,9 +23,9 @@ exports.Prediction = async (req, res) => {
             });
 
             var exist = fs.existsSync(`./${filename}`);
-            console.log(exist, "from file upload", `"./${filename}"`)
+            console.log(exist, "from file upload", `./${filename}`)
 
-            const python = spawn('dental/bin/python', ['./detect.py','--source', `"./${filename}"`, '--weights', `"./runs/train/exp/weights/best.pt"`]);
+            const python = spawn('dental/bin/python', ['./detect.py','--source', `./${filename}`, '--weights', `./runs/train/exp/weights/best.pt`]);
 
             python.stdout.on('data', async (data) => {
                 
