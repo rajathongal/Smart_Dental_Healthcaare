@@ -1,6 +1,6 @@
 const Users = require('../../models/users/users');
 const bcrypt = require('bcryptjs');
-const { generateToken } = require('../../Utils/generateToken');
+const { generateToken } = require('../../utils/generateToken');
 const graphql = require('graphql');
 const {
     GraphQLError

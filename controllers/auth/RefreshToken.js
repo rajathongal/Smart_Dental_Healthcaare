@@ -4,7 +4,7 @@ const {
     GraphQLError
 } = graphql;
 const jwt = require('jsonwebtoken');
-const { generateToken } = require('../../Utils/generateToken');
+const { generateToken } = require('../../utils/generateToken');
 
 
 module.exports = async function RefreshAccess (args,context) {

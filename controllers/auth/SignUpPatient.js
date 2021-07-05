@@ -4,7 +4,7 @@ const graphql = require('graphql');
 const {
     GraphQLError
 } = graphql;
-const { generateToken } = require('../../Utils/generateToken');
+const { generateToken } = require('../../utils/generateToken');
 
 module.exports = async function SignUpUser (name, email, password, context)  {
     
