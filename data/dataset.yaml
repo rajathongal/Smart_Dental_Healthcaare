@@ -1,0 +1,6 @@
+train: ./data/custom dataset/train/images
+val: ./data/custom dataset/train/images
+
+nc: 5
+
+names: ['Fluoris','Decay','Oral Thrush','Chipped Tooth','Fillings']

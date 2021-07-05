@@ -1,0 +1,47 @@
+{
+  "name": "smartdentalhealthcare",
+  "version": "0.0.1",
+  "description": "Dental disease detection",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start.js",
+    "server": "cross-env NODE_ENV=development nodemon start.js --unhandled-rejections=strict",
+    "start:test": "cross-env NODE_ENV=test node start.js",
+    "start:prod": "cross-env NODE_ENV=development node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajathongal/Smart_Dental_Healthcaare.git"
+  },
+  "keywords": [
+    "dental",
+    "healtcare",
+    "yolov3",
+    "nodejs",
+    "python"
+  ],
+  "author": "rajathhongal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajathongal/Smart_Dental_Healthcaare/issues"
+  },
+  "homepage": "https://github.com/rajathongal/Smart_Dental_Healthcaare#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.12",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
+  }
+}

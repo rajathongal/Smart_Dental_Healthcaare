@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dentocare-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: dentocare-backend
+  template:
+    metadata:
+      labels:
+        component: dentocare-backend
+    spec: 
+      containers:
+        - name: dentocare-backend
+          image: asia.gcr.io/dentalhealtcare/dentocare/dentocare-backend:latest
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          imagePullPolicy: Always
